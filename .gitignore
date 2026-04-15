@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code session state
+.claude/
+
+# Project-local progress notes (per rules.md)
+PROGRESS.md
+STUCK_FAILURES.md
+STUCK_FAILURES.jsonl
+sentinel-findings.md
+sentinel-findings.jsonl
+
+# Generated outputs
+outputs/
+dashboard/assets-generated/
+*.csv.backup
+
+# OS
+.DS_Store
+Thumbs.db
