@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-import sys
-sys.path.insert(0, r"C:\MetaAudit")
+from repro_floor_atlas import _metaaudit_path  # noqa: F401  (ensures metaaudit on sys.path)
 
 from pathlib import Path
 
