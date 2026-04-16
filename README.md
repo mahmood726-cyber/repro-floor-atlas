@@ -20,7 +20,7 @@ python scripts/run_atlas.py        # produces outputs/atlas.csv
 pytest -v                          # all tests must pass
 ```
 
-Set the `METAAUDIT_DIR` env var to the MetaAudit package directory (the folder containing `metaaudit/loader.py`). MetaAudit lacks PyPI packaging; the path shim at `src/repro_floor_atlas/_metaaudit_path.py` fails closed if it can't find it. Set the `PAIRWISE70_DIR` env var to the Pairwise70 `.rda` corpus directory — all scripts require it.
+Set the `METAAUDIT_DIR` env var to the MetaAudit `metaaudit/` package directory (the folder containing `__init__.py`, `loader.py`, `recompute.py`). MetaAudit lacks PyPI packaging; the path shim at `src/repro_floor_atlas/_metaaudit_path.py` defaults to `C:\MetaAudit\metaaudit` and fails closed if the directory is missing. Set the `PAIRWISE70_DIR` env var to the Pairwise70 `.rda` corpus directory — all scripts require it.
 
 ## Reproduction
 
