@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from pathlib import Path
@@ -10,14 +11,25 @@ from pathlib import Path
 from repro_floor_atlas.atlas import build_atlas
 from repro_floor_atlas.loader import load_directory
 
+_ENV_VAR = "PAIRWISE70_DIR"
+
+
+def _resolve_default_data_dir() -> Path | None:
+    """Resolve Pairwise70 dir from env var. No hardcoded default (Sentinel P0)."""
+    val = os.environ.get(_ENV_VAR)
+    return Path(val) if val else None
+
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--data-dir",
         type=Path,
-        default=Path(r"C:\Projects\Pairwise70\data"),
-        help="Pairwise70 .rda directory",
+        default=_resolve_default_data_dir(),
+        help=(
+            "Pairwise70 .rda directory "
+            f"(required unless {_ENV_VAR} env var is set)"
+        ),
     )
     parser.add_argument(
         "--out",
@@ -33,8 +45,18 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
+    if args.data_dir is None:
+        print(
+            f"ERROR: --data-dir is required (or set the {_ENV_VAR} env var)",
+            file=sys.stderr,
+        )
+        return 1
     if not args.data_dir.is_dir():
-        print(f"ERROR: data dir not found: {args.data_dir}", file=sys.stderr)
+        print(
+            f"ERROR: data dir not found: {args.data_dir} "
+            f"(set {_ENV_VAR} env var or pass --data-dir)",
+            file=sys.stderr,
+        )
         return 1
 
     t0 = time.time()

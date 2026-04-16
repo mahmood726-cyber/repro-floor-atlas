@@ -20,11 +20,11 @@ python scripts/run_atlas.py        # produces outputs/atlas.csv
 pytest -v                          # all tests must pass
 ```
 
-MetaAudit must be available at `C:\MetaAudit` (or set the `METAAUDIT_DIR` env var to its location). MetaAudit lacks PyPI packaging; the path shim at `src/repro_floor_atlas/_metaaudit_path.py` fails closed if it can't find it.
+Set the `METAAUDIT_DIR` env var to the MetaAudit package directory (the folder containing `metaaudit/loader.py`). MetaAudit lacks PyPI packaging; the path shim at `src/repro_floor_atlas/_metaaudit_path.py` fails closed if it can't find it. Set the `PAIRWISE70_DIR` env var to the Pairwise70 `.rda` corpus directory — all scripts require it.
 
 ## Reproduction
 
-- Source data: Pairwise70 Cochrane corpus (`C:\Projects\Pairwise70\data`; 595 reviews / 7,545 MAs)
+- Source data: Pairwise70 Cochrane corpus, 595 reviews / 7,545 MAs (path via `PAIRWISE70_DIR` env var)
 - Pooling engine: MetaAudit `metaaudit.recompute` (inverse-variance fixed-effect)
 - Rounding scenarios: raw extraction (A) and forest-plot extraction (B)
 - Regression baseline: `tests/fixtures/smoke_10_mas.json` — re-running the pipeline must bit-match this file

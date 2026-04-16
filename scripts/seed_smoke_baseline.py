@@ -8,18 +8,27 @@ Re-run only when the numerical contract intentionally changes.
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
 from repro_floor_atlas.atlas import build_atlas, CSV_COLUMNS
 from repro_floor_atlas.loader import load_directory
 
-DATA_DIR = Path(r"C:\Projects\Pairwise70\data")
+_ENV_VAR = "PAIRWISE70_DIR"
+_env_val = os.environ.get(_ENV_VAR)
+DATA_DIR = Path(_env_val) if _env_val else None
 FIXTURE = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "smoke_10_mas.json"
 TMP_CSV = Path(__file__).resolve().parent.parent / "outputs" / "smoke_10.csv"
 
 
 def main() -> int:
+    if DATA_DIR is None:
+        sys.exit(f"{_ENV_VAR} env var is required (path to Pairwise70 .rda corpus).")
+    if not DATA_DIR.is_dir():
+        sys.exit(
+            f"Pairwise70 corpus not found at {DATA_DIR}. Re-check {_ENV_VAR}."
+        )
     mas = load_directory(DATA_DIR, max_reviews=None)
     mas_sorted = sorted(mas, key=lambda m: (m.review_id, m.analysis_number))[:10]
     TMP_CSV.parent.mkdir(parents=True, exist_ok=True)
