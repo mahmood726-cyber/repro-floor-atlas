@@ -39,6 +39,11 @@ Set the `METAAUDIT_DIR` env var to the MetaAudit package directory (the folder c
 
 See `e156-submission/e156_paper.md`. Protocol: `E156-PROTOCOL.md`.
 
+## Verification status
+
+- pytest: 21 passed (2026-04-16)
+- Sentinel scan: PASS (0 BLOCK, 0 WARN) after env-var fix
+
 ## License
 
 MIT. See `LICENSE`.
