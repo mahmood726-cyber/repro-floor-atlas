@@ -1,0 +1,23 @@
+{
+  "records": {
+    "repro-floor-atlas-v0.1.0": {
+      "ci_lower": null,
+      "ci_upper": null,
+      "commit_sha": "a1c63d48cfb9488f0f218283d84e65bcd05b4427",
+      "extra": {
+        "reproducibility_binary": 12.9,
+        "reproducibility_continuous": 25.0,
+        "reproducibility_giv": 27.0
+      },
+      "i2": null,
+      "k": 7545.0,
+      "paper_id": "repro-floor-atlas-v0.1.0",
+      "pooled_estimate": 14.3,
+      "q": null,
+      "recorded_at": "2026-04-19T21:20:49Z",
+      "se": null,
+      "tau2": null
+    }
+  },
+  "schema_version": "0.1"
+}
