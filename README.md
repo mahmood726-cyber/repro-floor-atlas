@@ -41,8 +41,8 @@ See `e156-submission/e156_paper.md`. Protocol: `E156-PROTOCOL.md`.
 
 ## Verification status
 
-- pytest: 21 passed (2026-04-16)
-- Sentinel scan: PASS (0 BLOCK, 0 WARN) after env-var fix
+- pytest: 21 passed (requires `METAAUDIT_DIR` + `PAIRWISE70_DIR` set; collection fails closed otherwise)
+- Sentinel scan: 0 BLOCK; 2 WARN are environmental (baseline-drift when MetaAudit is not on the default path; a claim-grounding pattern-match on an internal design spec)
 
 ## License
 

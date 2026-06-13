@@ -145,8 +145,8 @@ Scenario-B adaptive rounding.
 independently re-pooled to the precision at which it was published, using only
 the per-trial numerics a reader can extract from the paper?
 
-**S2 (Dataset, ~20w):** Pairwise70 corpus: 501 Cochrane reviews comprising
-6,229 meta-analyses spanning binary, continuous, and generic-inverse-variance
+**S2 (Dataset, ~20w):** Pairwise70 corpus: 595 Cochrane reviews comprising
+7,545 meta-analyses spanning binary, continuous, and generic-inverse-variance
 outcomes, with trial-level inputs at machine precision.
 
 **S3 (Method, ~20w):** For each MA we computed the machine-precision pooled
